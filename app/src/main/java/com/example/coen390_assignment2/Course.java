@@ -4,6 +4,12 @@ public class Course {
     protected String courseTitle;
     protected String courseCode;
 
+    public Course(String courseTitle,String courseCode)
+    {
+        this.courseTitle = courseTitle;
+        this.courseCode = courseCode;
+    }
+
     public String getCourseTitle() {
         return courseTitle;
     }

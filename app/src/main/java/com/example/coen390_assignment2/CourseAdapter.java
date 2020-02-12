@@ -1,5 +1,8 @@
 package com.example.coen390_assignment2;
 
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,17 +16,28 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder> {
+    private Context context;
+    public static final String TAG = "CourseAdapter";
     ArrayList<Course> courses;
 
-    public CourseAdapter(ArrayList<Course> courses)
+    public CourseAdapter(ArrayList<Course> courses,Context context)
     {
         this.courses = courses;
+        this.context = context;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.course_view_holder,parent,false);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG,"Clicking RecyclerView item");
+                Intent intent = new Intent(context,AssignmentActivity.class);
+                context.startActivity(intent);
+            }
+        });
         return new ViewHolder(view);
     }
 

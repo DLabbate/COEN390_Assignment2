@@ -21,11 +21,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         courses = new ArrayList<Course>();
-        courses.add(new Course("mini cap","coen390"));
-        courses.add(new Course("cap","coen490"));
+        courses.add(new Course(0,"mini cap","coen390"));
+        courses.add(new Course(0,"cap","coen490"));
 
         courseRecyclerView = findViewById(R.id.course_recycler_view);
-        courseAdapter = new CourseAdapter(courses);
+        courseAdapter = new CourseAdapter(courses,MainActivity.this);
         linearLayoutManager = new LinearLayoutManager(this);
         courseRecyclerView.setAdapter(courseAdapter);
         courseRecyclerView.setLayoutManager(linearLayoutManager);

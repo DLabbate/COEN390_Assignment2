@@ -14,13 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder> {
     private Context context;
     public static final String TAG = "CourseAdapter";
-    ArrayList<Course> courses;
+    List<Course> courses;
 
-    public CourseAdapter(ArrayList<Course> courses,Context context)
+    public CourseAdapter(List<Course> courses,Context context)
     {
         this.courses = courses;
         this.context = context;

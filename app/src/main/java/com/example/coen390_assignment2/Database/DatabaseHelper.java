@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.coen390_assignment2.Course;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -28,9 +29,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE_COURSE = "CREATE TABLE " + DBConfig.COURSE_TABLE_NAME
                 + " (" + DBConfig.COLUMN_COURSE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + DBConfig.COLUMN_COURSE_TITLE + " TEXT NOT NULL,"
+                + DBConfig.COLUMN_COURSE_TITLE + " TEXT NOT NULL, "
                 + DBConfig.COLUMN_COURSE_CODE + " TEXT NOT NULL)";
 
+        db.execSQL(CREATE_TABLE_COURSE);
         Log.d(TAG,CREATE_TABLE_COURSE);
     }
 
@@ -69,7 +71,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = null;
-        List<Course> courses = new ArrayList<Course>();
 
         try
         {
@@ -77,13 +78,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             if (cursor != null)
             {
-                do
+                if (cursor.moveToFirst())
                 {
-                    int id = cursor.getInt(cursor.getColumnIndex(DBConfig.COLUMN_COURSE_ID));
-                    String title = cursor.getString(cursor.getColumnIndex(DBConfig.COLUMN_COURSE_TITLE));
-                    String code = cursor.getString(cursor.getColumnIndex(DBConfig.COLUMN_COURSE_CODE));
+                    List<Course> courses = new ArrayList<Course>();
+                    do
+                    {
+                        int id = cursor.getInt(cursor.getColumnIndex(DBConfig.COLUMN_COURSE_ID));
+                        String title = cursor.getString(cursor.getColumnIndex(DBConfig.COLUMN_COURSE_TITLE));
+                        String code = cursor.getString(cursor.getColumnIndex(DBConfig.COLUMN_COURSE_CODE));
+                        courses.add(new Course(id,title,code));
+                    }
+                    while(cursor.moveToNext());
+
+                    return courses;
                 }
-                while(cursor.moveToNext());
             }
 
         }
@@ -101,8 +109,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.close();
         }
 
-
-
-        return courses;
+        return Collections.emptyList();
     }
 }

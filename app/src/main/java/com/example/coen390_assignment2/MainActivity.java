@@ -25,9 +25,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         databaseHelper = new DatabaseHelper(this);
 
-        databaseHelper.insertCourse(new Course(1,"test1","test1"));
-        databaseHelper.insertCourse(new Course(1,"test2","test2"));
+        databaseHelper.insertCourse(new Course(1,"MINI CAP","COEN390"));
+        databaseHelper.insertCourse(new Course(1,"CAP","COEN490"));
         databaseHelper.insertCourse(new Course(1,"test3","test3"));
+        databaseHelper.insertAssignment(new Assignment(1,1,"assignment1",100));
 
         courses = new ArrayList<Course>();
         courses.add(new Course(0,"mini cap","coen390"));

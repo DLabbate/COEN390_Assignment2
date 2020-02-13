@@ -87,4 +87,10 @@ public class MainActivity extends AppCompatActivity {
         courseRecyclerView.setAdapter(courseAdapter);
         courseRecyclerView.setLayoutManager(linearLayoutManager);
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        updateOverallAverage();
+    }
 }

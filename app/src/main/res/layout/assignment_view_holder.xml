@@ -3,8 +3,11 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
     android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp">
+    android:layout_marginBottom="10dp"
+    android:background="#5CC8F8">
 
     <TextView
         android:id="@+id/assignment_title_text_view"
@@ -19,4 +22,5 @@
         android:layout_height="wrap_content"
         android:text="Assignment Grade"
         android:layout_marginLeft="7dp"/>
+
 </LinearLayout>

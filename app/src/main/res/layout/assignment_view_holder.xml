@@ -10,11 +10,13 @@
         android:id="@+id/assignment_title_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Assignment Title" />
+        android:text="Assignment Title"
+        android:layout_marginLeft="7dp"/>
 
     <TextView
         android:id="@+id/assignment_grade_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Assignment Grade" />
+        android:text="Assignment Grade"
+        android:layout_marginLeft="7dp"/>
 </LinearLayout>

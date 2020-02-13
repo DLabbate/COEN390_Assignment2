@@ -39,6 +39,7 @@ public class AssignmentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_assignment);
         databaseHelper = new DatabaseHelper(this);
         setupUI();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (getIntent().hasExtra("current_course") && getIntent().hasExtra("course_title"))
         {

@@ -243,4 +243,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return Collections.emptyList();
     }
+
+    public void deleteCourse(int CourseID)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long id = -1;
+
+        /*
+        String query = "DELETE FROM " + DBConfig.ASSIGNMENT_TABLE_NAME
+                + " WHERE " + DBConfig.COLUMN_ASSIGNMENT_COURSE_ID
+                + " = " + CourseID;
+
+        Log.d(TAG,query);
+         */
+
+        try
+        {
+            //Drop assignments related to this course
+            db.delete(DBConfig.ASSIGNMENT_TABLE_NAME,DBConfig.COLUMN_ASSIGNMENT_COURSE_ID + "=?",new String[]{Integer.toString(CourseID)});
+
+            //Drop class
+            db.delete(DBConfig.COURSE_TABLE_NAME,DBConfig.COLUMN_COURSE_ID + "=?",new String[]{Integer.toString(CourseID)});
+        }
+        catch (SQLException e)
+        {
+            Log.d(TAG,"ERROR" + e);
+            Toast.makeText(context,"ERROR DELETING"+ e,Toast.LENGTH_SHORT).show();
+        }
+        finally
+        {
+            db.close();
+        }
+    }
 }

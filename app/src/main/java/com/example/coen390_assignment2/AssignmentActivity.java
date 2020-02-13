@@ -5,10 +5,12 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.coen390_assignment2.Database.DatabaseHelper;
@@ -29,6 +31,7 @@ public class AssignmentActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     TextView courseTitle;
     FloatingActionButton addAssignmentFAB;
+    Button deleteCourseButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +64,22 @@ public class AssignmentActivity extends AppCompatActivity {
     {
         courseTitle = findViewById(R.id.course_title_text_view);
         addAssignmentFAB = findViewById(R.id.fab_add_assignment);
+        deleteCourseButton = findViewById(R.id.btn_delete_course);
 
         addAssignmentFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 InsertAssignmentDialogFragment insertAssignmentDialogFragment = new InsertAssignmentDialogFragment();
                 insertAssignmentDialogFragment.show(getSupportFragmentManager(),"Insert Course Fragment");
+            }
+        });
+
+        deleteCourseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databaseHelper.deleteCourse(CURRENT_COURSE_ID);
+                Intent intent = new Intent(AssignmentActivity.this,MainActivity.class);
+                startActivity(intent);
             }
         });
     }

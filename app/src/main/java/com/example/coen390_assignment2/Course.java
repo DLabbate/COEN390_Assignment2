@@ -13,6 +13,13 @@ public class Course {
         this.courseCode = courseCode;
     }
 
+    public Course(String courseTitle,String courseCode)
+    {
+        int ID = 0;
+        this.courseTitle = courseTitle;
+        this.courseCode = courseCode;
+    }
+
     public String getCourseTitle() {
         return courseTitle;
     }

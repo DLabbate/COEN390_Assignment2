@@ -16,6 +16,14 @@ public class Assignment {
         this.grade = grade;
     }
 
+    public Assignment(int courseID, String title,double grade)
+    {
+        this.assignmentID = 0;
+        this.courseID = courseID;
+        this.title = title;
+        this.grade = grade;
+    }
+
     public int getAssignentID() {
         return assignmentID;
     }

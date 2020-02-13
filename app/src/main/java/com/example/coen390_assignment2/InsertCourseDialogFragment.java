@@ -1,6 +1,7 @@
 package com.example.coen390_assignment2;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+
+import com.example.coen390_assignment2.Database.DatabaseHelper;
 
 public class InsertCourseDialogFragment extends DialogFragment {
 
@@ -31,14 +34,25 @@ public class InsertCourseDialogFragment extends DialogFragment {
         saveCourseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                String course_title = courseTitleEditText.getText().toString();
+                String course_code = courseCodeEditText.getText().toString();
+                DatabaseHelper databaseHelper = new DatabaseHelper(getActivity());
+                //Parameter needs context (activity that is hosting the fragment)
+                //getActivity() returns the activity hosting the fragment
+                if (!((course_title.equals("")) || (course_code.equals(""))))
+                {
+                    Log.d("Insert Course Dialog","Adding New Course: " + course_title + " " + course_code);
+                    databaseHelper.insertCourse(new Course(course_title,course_code));
+                    ((MainActivity)getActivity()).loadRecyclerView();
+                    getDialog().dismiss();
+                }
             }
         });
 
         cancelCourseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                getDialog().dismiss();
             }
         });
 

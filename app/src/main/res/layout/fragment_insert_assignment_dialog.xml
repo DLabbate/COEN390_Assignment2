@@ -3,49 +3,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/course_title_edit_text"
+        android:id="@+id/assignment_title_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="61dp"
-        android:layout_marginBottom="63dp"
-        android:hint="Course Title"
-        app:layout_constraintBottom_toTopOf="@+id/course_code_edit_text"
+        android:hint="Assignment Title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/course_code_edit_text"
+        android:id="@+id/assignment_grade_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="143dp"
-        android:hint="Course Code"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="52dp"
+        android:hint="Assignment Grade"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="@+id/assignment_title_edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/assignment_title_edit_text" />
 
     <Button
-        android:id="@+id/btn_cancel_course"
+        android:id="@+id/btn_cancel_assignment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="17dp"
         android:text="Cancel"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btn_save_course"
-        app:layout_constraintEnd_toStartOf="@+id/btn_save_course"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_save_assignment"
+        app:layout_constraintEnd_toStartOf="@+id/btn_save_assignment"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_save_course"
+        android:id="@+id/btn_save_assignment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="57dp"
         android:layout_marginEnd="17dp"
         android:text="Save"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btn_cancel_course"
-        app:layout_constraintTop_toBottomOf="@+id/course_code_edit_text" />
+        app:layout_constraintStart_toEndOf="@+id/btn_cancel_assignment"
+        app:layout_constraintTop_toBottomOf="@+id/assignment_grade_edit_text" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

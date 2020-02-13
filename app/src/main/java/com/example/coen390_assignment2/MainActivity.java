@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.widget.TextView;
 
 import com.example.coen390_assignment2.Database.DatabaseHelper;
 
@@ -18,17 +19,25 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView.Adapter courseAdapter;
     RecyclerView.LayoutManager linearLayoutManager;
     DatabaseHelper databaseHelper;
+    TextView overallAverageTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         databaseHelper = new DatabaseHelper(this);
+        setupUI();
 
+
+        //TEST**************************************************************************************************
         databaseHelper.insertCourse(new Course(1,"MINI CAP","COEN390"));
         databaseHelper.insertCourse(new Course(1,"CAP","COEN490"));
-        databaseHelper.insertCourse(new Course(1,"test3","test3"));
         databaseHelper.insertAssignment(new Assignment(1,1,"assignment1",100));
+        databaseHelper.insertAssignment(new Assignment(1,1,"assignment1",100));
+        databaseHelper.insertAssignment(new Assignment(2,2,"assignment2",75));
+        //******************************************************************************************************
+
+        updateOverallAverage();
 
         courses = new ArrayList<Course>();
         courses.add(new Course(0,"mini cap","coen390"));
@@ -39,5 +48,16 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutManager = new LinearLayoutManager(this);
         courseRecyclerView.setAdapter(courseAdapter);
         courseRecyclerView.setLayoutManager(linearLayoutManager);
+    }
+
+    private void setupUI()
+    {
+        overallAverageTextView = findViewById(R.id.overall_average_text_view);
+    }
+
+    private void updateOverallAverage()
+    {
+        overallAverageTextView.setText
+                ("Overall Average: " + Assignment.getAssignmentAverage(databaseHelper.getAllAssignments()));
     }
 }

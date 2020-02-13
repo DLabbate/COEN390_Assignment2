@@ -1,5 +1,7 @@
 package com.example.coen390_assignment2;
 
+import java.util.List;
+
 public class Assignment {
     protected int assignmentID;
     protected int courseID;
@@ -44,5 +46,19 @@ public class Assignment {
 
     public void setGrade(double grade) {
         this.grade = grade;
+    }
+
+
+    public static double getAssignmentAverage(List<Assignment> assignments)
+    {
+        //This method is used to calculate the overall average, when given a list of assignments
+        int n = assignments.size();
+        double sum = 0;
+        for (int i = 0; i<assignments.size(); i++)
+        {
+            sum += assignments.get(i).getGrade();
+        }
+
+        return sum/n;
     }
 }

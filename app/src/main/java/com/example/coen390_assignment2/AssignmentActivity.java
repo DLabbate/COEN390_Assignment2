@@ -85,5 +85,10 @@ public class AssignmentActivity extends AppCompatActivity {
         assignmentRecyclerView.setLayoutManager(linearLayoutManager);
     }
 
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        loadAssignmentRecyclerView();
+        updateCourseTitle();
+    }
 }

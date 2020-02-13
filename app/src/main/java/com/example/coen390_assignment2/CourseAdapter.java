@@ -49,6 +49,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
             public void onClick(View v) {
                 Log.d(TAG,"Clicking RecyclerView item");
                 Intent intent = new Intent(context,AssignmentActivity.class);
+                intent.putExtra("course_title",courses.get(position).getCourseTitle() + " " + courses.get(position).getCourseCode());
                 intent.putExtra("current_course",courses.get(position).getID());
                 context.startActivity(intent);
             }

@@ -3,6 +3,10 @@ package com.example.coen390_assignment2;
 import java.util.List;
 
 public class Assignment {
+    /*
+    This class is used to hold information pertaining to an assignment
+     */
+
     protected int assignmentID;
     protected int courseID;
     protected String title;

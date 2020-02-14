@@ -27,7 +27,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
+    public void onCreate(SQLiteDatabase db) //Creates a course table and assignment table
+    {
         String CREATE_TABLE_COURSE = "CREATE TABLE " + DBConfig.COURSE_TABLE_NAME
                 + " (" + DBConfig.COLUMN_COURSE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + DBConfig.COLUMN_COURSE_TITLE + " TEXT NOT NULL, "
@@ -50,7 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public long insertCourse(Course course)
+    public long insertCourse(Course course) //Inserts a single course into the database
     {
         SQLiteDatabase db = this.getWritableDatabase();
         long id = -1;
@@ -76,7 +77,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return id;
     }
 
-    public List<Course> getAllCourses()
+    public List<Course> getAllCourses() //Returns a list of all courses in the database
     {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = null;
@@ -122,7 +123,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public long insertAssignment(Assignment assignment)
+    public long insertAssignment(Assignment assignment) //Adds an assignment to the assignment table
     {
         SQLiteDatabase db = this.getWritableDatabase();
         long id = -1;
@@ -149,7 +150,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return id;
     }
 
-    public List<Assignment> getAssignment(int courseID)
+    public List<Assignment> getAssignment(int courseID) //Returns a list of assignments of a PARTICULAR course
     {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = null;
@@ -158,7 +159,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         try
         {
-            //cursor = db.query(DBConfig.COURSE_TABLE_NAME,null,null,null,null,null,null);
             cursor = db.rawQuery(query,null);
 
             if (cursor != null)
@@ -198,7 +198,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return Collections.emptyList();
     }
 
-    public List<Assignment> getAllAssignments()
+    public List<Assignment> getAllAssignments() //Returns list of all assignments
     {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = null;
@@ -248,14 +248,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     {
         SQLiteDatabase db = this.getWritableDatabase();
         long id = -1;
-
-        /*
-        String query = "DELETE FROM " + DBConfig.ASSIGNMENT_TABLE_NAME
-                + " WHERE " + DBConfig.COLUMN_ASSIGNMENT_COURSE_ID
-                + " = " + CourseID;
-
-        Log.d(TAG,query);
-         */
 
         try
         {

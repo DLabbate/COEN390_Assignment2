@@ -28,35 +28,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        databaseHelper = new DatabaseHelper(this);
-        setupUI();
-
-
-        //TEST**************************************************************************************************
-        /*
-        databaseHelper.insertCourse(new Course(1,"MINI CAP","COEN390"));
-        databaseHelper.insertCourse(new Course(1,"CAP","COEN490"));
-        databaseHelper.insertAssignment(new Assignment(1,1,"assignment1",100));
-        databaseHelper.insertAssignment(new Assignment(1,1,"assignment1",100));
-        databaseHelper.insertAssignment(new Assignment(2,2,"assignment2",75));
-         */
-        //******************************************************************************************************
-
-        updateOverallAverage();
-
-        //courses = new ArrayList<Course>();
-        //courses.add(new Course(0,"mini cap","coen390"));
-        //courses.add(new Course(0,"cap","coen490"));
-
-        /*
-        courseRecyclerView = findViewById(R.id.course_recycler_view);
-        courseAdapter = new CourseAdapter(databaseHelper.getAllCourses(),MainActivity.this);
-        linearLayoutManager = new LinearLayoutManager(this);
-        courseRecyclerView.setAdapter(courseAdapter);
-        courseRecyclerView.setLayoutManager(linearLayoutManager);
-         */
-
-        loadRecyclerView();
+        databaseHelper = new DatabaseHelper(this); //Reference to a DatabaseHelper
+        setupUI(); //Connectes View references to appropriate elements in xml
+        updateOverallAverage(); //Updates the OVERALL average of ALL assignments in the DB
+        loadRecyclerView(); //Loads to list of courses
     }
 
     private void setupUI()

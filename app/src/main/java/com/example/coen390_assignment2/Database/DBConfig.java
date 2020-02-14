@@ -1,6 +1,12 @@
 package com.example.coen390_assignment2.Database;
 
 public class DBConfig {
+
+    /*
+    This class is used to store information pertaining to the course database. This includes
+    table names and column names.
+     */
+
     public static final String DATABASE_NAME = "courses-db";
     public static final int DATABASE_VERSION = 1;
 

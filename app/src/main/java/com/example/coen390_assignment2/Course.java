@@ -1,6 +1,9 @@
 package com.example.coen390_assignment2;
 
 public class Course {
+    /*
+    This class is used to hold information pertaining to a course
+     */
 
     protected int ID;
     protected String courseTitle;

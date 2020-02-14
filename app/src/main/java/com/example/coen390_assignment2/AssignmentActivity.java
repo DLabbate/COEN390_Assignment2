@@ -37,28 +37,18 @@ public class AssignmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assignment);
-        databaseHelper = new DatabaseHelper(this);
-        setupUI();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        databaseHelper = new DatabaseHelper(this); //Create an reference to an instance of DatabaseHelper
+        setupUI(); //Connects View references to corresponding Views in the xml
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //Displays the up navigation to return to MainActivity
 
         if (getIntent().hasExtra("current_course") && getIntent().hasExtra("course_title"))
         {
-            CURRENT_COURSE_ID = getIntent().getIntExtra("current_course",0);
-            CURRENT_COURSE_TITLE = getIntent().getStringExtra("course_title");
+            CURRENT_COURSE_ID = getIntent().getIntExtra("current_course",0); //Retrieves the course code
+            CURRENT_COURSE_TITLE = getIntent().getStringExtra("course_title"); //Retrieves the course title
         }
 
-        updateCourseTitle();
-
-        /*
-        assignments = databaseHelper.getAllAssignments();
-        for (int i = 0; i<databaseHelper.getAllAssignments().size();i++)
-        {
-            Log.d(TAG,"Assignment title: " + assignments.get(i).title + "Assignment Grade " +
-                    assignments.get(i).getGrade());
-        }
-         */
-
-        loadAssignmentRecyclerView();
+        updateCourseTitle(); //Updates the TextView at the top of the activity to display the appropriate course
+        loadAssignmentRecyclerView(); //Loads the assignment recycler view
     }
 
     private void setupUI()

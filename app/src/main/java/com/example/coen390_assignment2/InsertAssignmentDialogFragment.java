@@ -43,8 +43,8 @@ public class InsertAssignmentDialogFragment extends DialogFragment {
                 {
                     double assignment_grade_double = new Double(assignmentGradeEditText.getText().toString());
                     Log.d("Insert Assignment Frag","Adding New Assignment: " + assignment_title + " " + assignment_grade_double);
-                    databaseHelper.insertAssignment(new Assignment(current_courseID,assignment_title,assignment_grade_double));
-                    ((AssignmentActivity)getActivity()).loadAssignmentRecyclerView();
+                    databaseHelper.insertAssignment(new Assignment(current_courseID,assignment_title,assignment_grade_double)); //Adds an assignment to the DB
+                    ((AssignmentActivity)getActivity()).loadAssignmentRecyclerView(); //Reloads assignment list
                     getDialog().dismiss();
                 }
             }

@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView.LayoutManager linearLayoutManager;
     DatabaseHelper databaseHelper;
     TextView overallAverageTextView;
-    FloatingActionButton addCourseFAB;
+    FloatingActionButton addCourseFAB; //Floating Action Button to insert courses
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
